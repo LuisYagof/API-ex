@@ -73,12 +73,40 @@ table {
 .wrapperResult {
     width: 95%;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.wrapperResult div{
+    width: 45%;
+    margin: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     flex-direction: column;
+    align-items: center;
+}
+.wrapperDet {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.wrapperDet div{
+    width: 45%;
+    margin: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
-    font-size: 5rem;
-    margin-bottom: 1%;
+    font-size: 4rem;
+    margin: 2% 0%;
+    text-align: center;
 }
 
 input {
@@ -87,4 +115,28 @@ input {
 
 button {
     width: 25%;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 1%;
+}
+
+h2:hover {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+}
+
+img {
+    width: 200px;
+    margin: 1%;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.dissap {
+    display: none;
 }

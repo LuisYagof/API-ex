@@ -1,29 +1,91 @@
 const WRAPPERresult = document.querySelector(".wrapperResult");
+const SUPERwrapper = document.querySelector(".superWrapper");
 const INPUT = document.querySelector("#searcher");
 const BUTTONsearch = document.querySelector("#buttonSearch");
 
-function fetchSouth(character) {
-    fetch(`https://spapi.dev/api/characters/${character}`)
+function fetchData(character) {
+    fetch(`https://rickandmortyapi.com/api/character/?name=${character}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        printElem(data)
+        data.results.map(elem => printElem(elem))
     });
 }  
 
-function printElem (data) {
-    let title = document.createElement("a")
-    let content = document.createTextNode(data.data.full_name)
+function printElem (elem) {
+    let box = document.createElement("div")
+    box.setAttribute("class", "general")
+    WRAPPERresult.appendChild(box)
+
+    let title = document.createElement("h2")
+    let content = document.createTextNode(elem.name)
     title.appendChild(content)
-    WRAPPERresult.appendChild(title)
+    box.appendChild(title)
+    
+    title.addEventListener("click", function(){
+        detail(elem)
+        dissapear()
+    })
+}
+
+function detail (det) {
+    let wrapper = document.createElement("div")
+    wrapper.setAttribute("class", "wrapperDet")
+    SUPERwrapper.appendChild(wrapper)
+    
+    let box = document.createElement("div")
+    wrapper.appendChild(box)
+
+    let title = document.createElement("h2")
+    let content = document.createTextNode(det.name)
+    title.appendChild(content)
+    box.appendChild(title)
+
+    let pic = document.createElement("img")
+    pic.setAttribute("src", det.image)
+    box.appendChild(pic)
+
+    let status = document.createElement("p")
+    let statusC = document.createTextNode(`Status: ${det.status}`)
+    status.appendChild(statusC)
+    box.appendChild(status)
+
+    let species = document.createElement("p")
+    let statusSp = document.createTextNode(`Species: ${det.species}`)
+    species.appendChild(statusSp)
+    box.appendChild(species)
+
+    let gender = document.createElement("p")
+    let genderC = document.createTextNode(`Gender: ${det.gender}`)
+    gender.appendChild(genderC)
+    box.appendChild(gender)
+
+    let back = document.createElement("button")
+    let backC = document.createTextNode(`Atrás`)
+    back.appendChild(backC)
+    box.appendChild(back)
+
+    back.addEventListener("click", function(){
+        WRAPPERresult.classList.remove("dissap")
+        WRAPPERresult.classList.add("wrapperResult")
+        wrapper.remove()
+
+    })
+
+}
+
+function dissapear () {
+    // let boxes = document.querySelectorAll(".general")
+    // // boxes.classList.remove("")
+    WRAPPERresult.setAttribute("class", "dissap")
+
+    // for (i=0; i<dissap.length; i++){
+    //     dissap[i].remove()
+    // }
 }
 
 BUTTONsearch.addEventListener("click", function() {
-    fetchSouth(INPUT.value);
+    fetchData(INPUT.value);
 })
 
 
-// let value = 0;
-// if (INPUT.value === "cartman" || INPUT.value === "CARTMAN") {
-//     return = 1;
-// }
+// ChildNode.replaceWith()
