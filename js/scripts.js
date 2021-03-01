@@ -14,7 +14,6 @@ function fetchData(character) {
 
 function printSearch (elem) {
     let box = document.createElement("div")
-    box.setAttribute("class", "general")
     WRAPPERresult.appendChild(box)
 
     let title = document.createElement("h2")
@@ -24,7 +23,7 @@ function printSearch (elem) {
     
     title.addEventListener("click", function(){
         printDetail(elem)
-        goBack()
+        hideSearch()
     })
 }
 
@@ -74,23 +73,13 @@ function printDetail (det) {
 
 }
 
-function goBack () {
-    // let boxes = document.querySelectorAll(".general")
-    // boxes.classList.remove("")
+function hideSearch() {
     WRAPPERresult.setAttribute("class", "dissap")
-
-    // for (i=0; i<dissap.length; i++){
-    //     dissap[i].remove()
-    // }
 }
 
 function resetSearch() {
-    // WRAPPERresult.remove();
-    // let wrapper = document.createElement("div")
-    // wrapper.setAttribute("class", "wrapperResult")
-    // SUPERwrapper.appendChild(wrapper)
-
     WRAPPERresult.querySelectorAll('*').forEach(n => n.remove())
+    INPUT.value = "";
 }
 
 BUTTONsearch.addEventListener("click", function() {

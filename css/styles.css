@@ -75,11 +75,12 @@ table {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .wrapperResult div{
     width: 45%;
-    margin: 1%;
+    margin: 2%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -94,13 +95,17 @@ table {
     justify-content: center;
 }
 
-.wrapperDet div{
+.wrapperDet div {
     width: 45%;
-    margin: 1%;
+    margin: 2%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.wrapperDet button {
+    width: 100%;
 }
 
 h1 {
@@ -110,6 +115,7 @@ h1 {
 }
 
 h4 {
+    margin: 3% 0;
     font-weight: normal;
     font-style: oblique;
     text-align: center;
@@ -125,7 +131,7 @@ button {
 }
 
 h2 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     margin: 1%;
     text-align: center;
 }
