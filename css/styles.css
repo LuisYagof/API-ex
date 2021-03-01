@@ -91,35 +91,43 @@ table {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .wrapperDet div{
     width: 45%;
     margin: 1%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 2% 0%;
     text-align: center;
 }
 
+h4 {
+    font-weight: normal;
+    font-style: oblique;
+    text-align: center;
+    color: grey;
+}
+
 input {
-    width: 65%;
+    width: 59%;
 }
 
 button {
-    width: 25%;
+    width: 20%;
 }
 
 h2 {
     font-size: 1.2rem;
     margin: 1%;
+    text-align: center;
 }
 
 h2:hover {

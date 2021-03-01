@@ -1,17 +1,18 @@
-const WRAPPERresult = document.querySelector(".wrapperResult");
 const SUPERwrapper = document.querySelector(".superWrapper");
+const WRAPPERresult = document.querySelector(".wrapperResult");
 const INPUT = document.querySelector("#searcher");
 const BUTTONsearch = document.querySelector("#buttonSearch");
+const BUTTONreset = document.querySelector("#buttonReset");
 
 function fetchData(character) {
     fetch(`https://rickandmortyapi.com/api/character/?name=${character}`)
     .then(response => response.json())
     .then(data => {
-        data.results.map(elem => printElem(elem))
+        data.results.map(elem => printSearch(elem))
     });
 }  
 
-function printElem (elem) {
+function printSearch (elem) {
     let box = document.createElement("div")
     box.setAttribute("class", "general")
     WRAPPERresult.appendChild(box)
@@ -22,12 +23,12 @@ function printElem (elem) {
     box.appendChild(title)
     
     title.addEventListener("click", function(){
-        detail(elem)
-        dissapear()
+        printDetail(elem)
+        goBack()
     })
 }
 
-function detail (det) {
+function printDetail (det) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("class", "wrapperDet")
     SUPERwrapper.appendChild(wrapper)
@@ -73,9 +74,9 @@ function detail (det) {
 
 }
 
-function dissapear () {
+function goBack () {
     // let boxes = document.querySelectorAll(".general")
-    // // boxes.classList.remove("")
+    // boxes.classList.remove("")
     WRAPPERresult.setAttribute("class", "dissap")
 
     // for (i=0; i<dissap.length; i++){
@@ -83,9 +84,20 @@ function dissapear () {
     // }
 }
 
+function resetSearch() {
+    // WRAPPERresult.remove();
+    // let wrapper = document.createElement("div")
+    // wrapper.setAttribute("class", "wrapperResult")
+    // SUPERwrapper.appendChild(wrapper)
+
+    WRAPPERresult.querySelectorAll('*').forEach(n => n.remove())
+}
+
 BUTTONsearch.addEventListener("click", function() {
     fetchData(INPUT.value);
 })
+
+BUTTONreset.addEventListener("click", resetSearch)
 
 
 // ChildNode.replaceWith()
