@@ -168,9 +168,22 @@ p {
     }
 
     button {
-        width: 49%;
+        width: 50%;
     }
 
     .wrapperSearch {
         flex-wrap: wrap;
+    }
+
+    .wrapperDet {
+        width: 100%;
+    }
+
+    .wrapperDet div {
+        width: 100%;
+    }
+
+    .wrapperDet button {
+        width: 50%;
+    }
 }
