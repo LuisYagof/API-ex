@@ -8,7 +8,7 @@ function fetchData(character) {
     fetch(`https://rickandmortyapi.com/api/character/?name=${character}`)
     .then(response => response.json())
     .then(data => {
-        sessionStorage.setItem(`search ${character}`, JSON.stringify(data))
+        sessionStorage.setItem(`search-${character}`, JSON.stringify(data))
         return data
     })
     .then(data => mapea(data))
@@ -88,11 +88,13 @@ function resetSearch() {
     INPUT.value = "";
 }
 
+// ------------------------------------------------------------------EVENTS
+
 BUTTONsearch.addEventListener("click", function() {
-    if ( !sessionStorage.getItem(`search ${INPUT.value}`) ){
+    if ( !sessionStorage.getItem(`search-${INPUT.value}`) ){
         fetchData(INPUT.value);
     } else {
-        let recover = JSON.parse(sessionStorage.getItem(`search ${INPUT.value}`))
+        let recover = JSON.parse(sessionStorage.getItem(`search-${INPUT.value}`))
         mapea(recover)
     }
 })
