@@ -8,11 +8,17 @@ function fetchData(character) {
     fetch(`https://rickandmortyapi.com/api/character/?name=${character}`)
     .then(response => response.json())
     .then(data => {
-        data.results.map(elem => printSearch(elem))
-    });
-}  
+        sessionStorage.setItem(`search ${character}`, JSON.stringify(data))
+        return data
+    })
+    .then(data => mapea(data))
+}
 
-function printSearch (elem) {
+function mapea(object){
+    object.results.map(elem => printSearch(elem))
+}
+
+function printSearch(elem) {
     let box = document.createElement("div")
     WRAPPERresult.appendChild(box)
 
@@ -27,7 +33,7 @@ function printSearch (elem) {
     })
 }
 
-function printDetail (det) {
+function printDetail(det) {
     let wrapper = document.createElement("div")
     wrapper.setAttribute("class", "wrapperDet")
     SUPERwrapper.appendChild(wrapper)
@@ -83,7 +89,12 @@ function resetSearch() {
 }
 
 BUTTONsearch.addEventListener("click", function() {
-    fetchData(INPUT.value);
+    if ( !sessionStorage.getItem(`search ${INPUT.value}`) ){
+        fetchData(INPUT.value);
+    } else {
+        let recover = JSON.parse(sessionStorage.getItem(`search ${INPUT.value}`))
+        mapea(recover)
+    }
 })
 
 BUTTONreset.addEventListener("click", resetSearch)
